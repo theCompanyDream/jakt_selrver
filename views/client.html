@@ -1,8 +1,15 @@
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io.connect('http://localhost:8080');
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
-</script>
+<html>
+  <head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect('http://localhost:8080');
+      socket.on('news', function (data) {
+        console.log(data);
+        socket.emit('bot message', { my: 'data is life' });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Stay Calm, you're getting things done</h1>
+  </body>
+</html>
