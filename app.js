@@ -3,6 +3,8 @@ var server = require('http').Server(app);
 const io = require('socket.io')(server);
 var path = require('path');
 
+var log = require('./logger');
+
 server.listen(8080);
 
 app.get('/', function (req, res) {
@@ -10,10 +12,12 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function (socket) {
-  console.log("Successful Connection");
+  log.info("Successful Connection");
   socket.emit('user_message', { hello: 'world' });
   socket.on('user_message', function (data) {
-    console.log(data);
+    log.debug(data);
     socket.emit('doctor_message', {message: 'acknowledge'});
   });
 });
+
+log.info("I\'m running");
