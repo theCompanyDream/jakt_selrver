@@ -1,6 +1,6 @@
 var app = require('express')();
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+const io = require('socket.io')(server);
 var path = require('path');
 
 server.listen(8080);
@@ -10,8 +10,10 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('bot message', function (data) {
+  console.log("Successful Connection");
+  socket.emit('user_message', { hello: 'world' });
+  socket.on('user_message', function (data) {
     console.log(data);
+    socket.emit('doctor_message', {message: 'acknowledge'});
   });
 });

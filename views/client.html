@@ -3,9 +3,9 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io.connect('http://localhost:8080');
-      socket.on('news', function (data) {
+      socket.on('user_message', function (data) {
         console.log(data);
-        socket.emit('bot message', { my: 'data is life' });
+        socket.emit('user_message', { my: 'data is life' });
       });
     </script>
   </head>
