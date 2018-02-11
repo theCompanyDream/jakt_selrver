@@ -16,7 +16,7 @@ io.on('connection', function (socket) {
   socket.emit('user_message', { hello: 'world' });
   socket.on('user_message', function (data) {
     log.debug(data);
-    socket.emit('doctor_message', {message: 'acknowledge'});
+    socket.emit('doctor_message', {message: 'I read you loud and clear'});
   });
 });
 
